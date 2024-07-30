@@ -1,3 +1,6 @@
+#collect input from users
+#walk through the input using a loop to count the characters inputted
+
 user_input = input('Enter your values: ')
 print(user_input)
 counter = 0
