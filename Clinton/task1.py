@@ -12,5 +12,5 @@ length = int(input('Enter the length of the cylinder: '))
 area = (pi*radius)**2
 volume = area * length
 
-print(f'The area of the cylinder is {area}')
+print(f'The area of the cylinder is {area}.2f')
 print(f'The volume of the cylinder is {volume}')
