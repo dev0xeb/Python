@@ -1,9 +1,7 @@
 def listortuple(number):
     list_number = number.split(',')
     number_tuple = tuple(list_number)
-    list_number = str(list_number)
-    number_tuple = str(number_tuple)
-    new_number = list_number + number_tuple
+    new_number = str(list_number) + str(number_tuple)
     return new_number
 print(listortuple("34,67,55,33,12,98"))
 
