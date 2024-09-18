@@ -12,7 +12,7 @@ while decision != 'no' and decision != 'No':
     user_input = int(input('Enter a number between 1 - 1000: '))
     counter+=1
     if user_input > guess_number:
-        print('Too high, try again')
+        print('Too high, tsry again')
     elif user_input < guess_number:
         print('Too low, try again')
     elif user_input == guess_number:

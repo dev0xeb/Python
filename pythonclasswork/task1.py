@@ -2,7 +2,7 @@ def concatonate_2_strings(str1, str2):
     new_str1 = str2[:2] + str1[2:]
     new_str2 = str1[:2] + str2[2:]
     return new_str1 + " " +new_str2
-#print(concatonate_2_strings("Hello", "world"))
+print(concatonate_2_strings("Hello", "world"))
 
 def add_ce_to_string(str1, ce):
     if len(str1) % 2 == 0:
