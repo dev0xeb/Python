@@ -2,8 +2,8 @@ import string
 from random import random
 
 
-def generate_password(password):
-    if len(password) < 8 or len(password) > 8:
+def generate_password(password_length):
+    if password_length < 8:
         raise ValueError("Password must be at least 8 characters long")
 
     upper_case = string.ascii_uppercase
@@ -28,3 +28,4 @@ def generate_password(password):
 
 
     return generated_password
+print(generate_password('<PASSWORD>'))
