@@ -119,3 +119,6 @@ class TestTelevision(unittest.TestCase):
         self.assertEqual(1, television.get_channel())
         television.set_volume(45)
         self.assertFalse(False, television.unmute())
+
+if __name__ == '__main__':
+    unittest.main()
