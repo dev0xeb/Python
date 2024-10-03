@@ -3,15 +3,18 @@ class Television:
         self.is_on:bool = False
         self.channel:int = 1
         self.volume_level = 1
+        self.mute:bool = False
 
     def television_is_off(self):
         self.is_on = False
+
     def television_is_on(self):
         self.is_on = True
 
     def turn_on(self):
         self.television_is_on()
         return self.is_on
+
     def turn_off(self):
         self.television_is_off()
         return self.is_on
@@ -49,6 +52,8 @@ class Television:
     def set_volume(self, volume):
         if volume < 0 or volume > 100:
             raise ValueError('Volume must be in the range of 1 and 100')
+        elif not self.is_on:
+            raise ValueError('Television not on')
         else:
             self.volume_level = volume
             return self.volume_level
@@ -66,3 +71,9 @@ class Television:
                 self.volume_level -= 1
             else:
                 raise ValueError('Volume cannot go below 0')
+
+    def is_mute(self):
+        self.mute = True
+
+    def unmute(self):
+        self.mute = False

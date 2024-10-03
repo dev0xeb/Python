@@ -1,4 +1,6 @@
 import unittest
+from imghdr import tests
+
 from television_app.television import Television
 
 class TestTelevision(unittest.TestCase):
@@ -93,3 +95,27 @@ class TestTelevision(unittest.TestCase):
         television.turn_off()
         self.assertFalse(television.turn_off())
         self.assertRaises(ValueError, television.set_channel, 2)
+
+    def test_television_cannot_produce_sound_when_off(self):
+        television = Television()
+        television.turn_on()
+        self.assertTrue(television.turn_on())
+        television.turn_off()
+        self.assertFalse(television.turn_off())
+        self.assertRaises(ValueError, television.set_volume, 57)
+
+    def test_television_mute_volume_when_on(self):
+        television = Television()
+        television.turn_on()
+        television.get_channel()
+        self.assertEqual(1, television.get_channel())
+        television.set_volume(75)
+        self.assertTrue(True, television.is_mute())
+
+    def test_television_can_unmute(self):
+        television = Television()
+        television.turn_on()
+        television.get_channel()
+        self.assertEqual(1, television.get_channel())
+        television.set_volume(45)
+        self.assertFalse(False, television.unmute())
