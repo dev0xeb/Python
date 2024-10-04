@@ -1,5 +1,4 @@
 import unittest
-from imghdr import tests
 
 from television_app.television import Television
 
