@@ -15,6 +15,12 @@ class TestTelevision(unittest.TestCase):
         television.turn_off()
         self.assertFalse(television.turn_off())
 
+    def test_television_intial_state(self):
+        television = Television()
+        self.assertTrue(television.turn_on())
+        self.assertEqual(television.get_channel(), 1)
+        self.assertEqual(television.get_volume(), 1)
+
     def test_television_is_on_channel_is_1(self):
         television = Television()
         television.turn_on()
@@ -50,6 +56,19 @@ class TestTelevision(unittest.TestCase):
         television.get_channel()
         self.assertEqual(1, television.get_channel())
         self.assertRaises(ValueError, television.set_channel, 101)
+
+    def test_set_valid_channel(self):
+        television = Television()
+        self.assertTrue(television.turn_on())
+        self.assertEqual(television.get_channel(), 1)
+        self.assertEqual(television.set_channel(50), 50)
+
+    def test_set_invalid_channel(self):
+        television = Television()
+        self.assertTrue(television.turn_on())
+        self.assertEqual(television.get_channel(), 1)
+        self.assertRaises(ValueError, television.set_channel, 0)
+
 
     def test_television_volume_when_on(self):
         television = Television()
@@ -87,6 +106,22 @@ class TestTelevision(unittest.TestCase):
         television.get_channel()
         self.assertEqual(1, television.get_channel())
         self.assertRaises(ValueError, television.set_volume, -1)
+
+    def test_set_valid_volume(self):
+        television = Television()
+        self.assertTrue(television.turn_on())
+        self.assertEqual(television.get_channel(), 1)
+        self.assertEqual(television.get_volume(), 1)
+        self.assertEqual(television.set_volume(50), 50)
+
+    def test_set_invalid_volume(self):
+        television = Television()
+        self.assertTrue(television.turn_on())
+        self.assertEqual(1, television.get_channel())
+        self.assertEqual(television.get_volume(), 1)
+        self.assertRaises(ValueError, television.set_volume, -1)
+        self.assertRaises(ValueError, television.set_volume, -1)
+        self.assertRaises(ValueError, television.set_volume, 101)
 
     def test_television_cannot_display_channel_when_off(self):
         television = Television()
