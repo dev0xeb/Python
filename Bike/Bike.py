@@ -33,23 +33,25 @@ class Bike:
     def change_speed(self, increment):
         if self.is_on:
             if increment:
-                if self.gear == 1:
-                    self.speed += 1
-                elif self.gear == 2:
-                    self.speed += 2
-                elif self.gear == 3:
-                    self.speed += 3
-                elif self.gear == 4:
-                    self.speed += 4
+                if self.speed < 79:
+                    if self.gear == 1:
+                        self.speed += 1
+                    elif self.gear == 2:
+                        self.speed += 2
+                    elif self.gear == 3:
+                        self.speed += 3
+                    elif self.gear == 4:
+                        self.speed += 4
             else:
-                if self.gear == 1:
-                    self.speed -= 1
-                elif self.gear == 2:
-                    self.speed -= 2
-                elif self.gear == 3:
-                    self.speed -= 3
-                elif self.gear == 4:
-                    self.speed -= 4
+                if self.speed > 0:
+                    if self.gear == 1:
+                        self.speed -= 1
+                    elif self.gear == 2:
+                        self.speed -= 2
+                    elif self.gear == 3:
+                        self.speed -= 3
+                    elif self.gear == 4:
+                        self.speed -= 4
             self.change_gear()
 
     def change_gear(self):

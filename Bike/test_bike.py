@@ -145,3 +145,55 @@ class TestBike(unittest.TestCase):
         self.assertEqual(bike.get_speed(), 47)
         bike.decelerate()
         self.assertEqual(bike.get_speed(), 43)
+
+    def test_speed_cannot_go_below_0_while_decelerating(self):
+        bike = Bike()
+        self.assertTrue(bike.turn_on())
+        self.assertEqual(bike.get_speed(), 0)
+        self.assertEqual(bike.get_gear(), 1)
+        for _ in range(21):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 21)
+        for _ in range(22):
+            bike.decelerate()
+        self.assertEqual(bike.get_speed(), 0)
+
+    def test_speed_cannot_go_beyond_80_while_accelerating(self):
+        bike = Bike()
+        bike.turn_on()
+        self.assertEqual(bike.get_speed(), 0)
+        self.assertEqual(bike.get_gear(), 1)
+        for _ in range(21):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 21)
+        self.assertEqual(bike.get_gear(), 2)
+        for _ in range(5):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 31)
+        self.assertEqual(bike.get_gear(), 3)
+        for _ in range(4):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 43)
+        self.assertEqual(bike.get_gear(), 4)
+        bike.accelerate()
+        self.assertEqual(bike.get_speed(), 47)
+        for _ in range(8):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 79)
+        self.assertEqual(bike.get_gear(), 4)
+        bike.accelerate()
+        self.assertEqual(bike.get_speed(), 79)
+
+    def test_gear_changes_during_deceleration(self):
+        bike = Bike()
+        self.assertTrue(bike.turn_on())
+        self.assertEqual(bike.get_speed(), 0)
+        self.assertEqual(bike.get_gear(), 1)
+        for _ in range(21):
+            bike.accelerate()
+        self.assertEqual(bike.get_speed(), 21)
+        self.assertEqual(bike.get_gear(), 2)
+        for _ in range(5):
+            bike.decelerate()
+        self.assertEqual(bike.get_speed(), 15)
+        self.assertEqual(bike.get_gear(), 1)
