@@ -8,6 +8,11 @@ class LoanCalculator:
     def set_borrower(self, borrower:str):
         self.borrower = borrower
 
+    def get_borrower(self):
+        return self.borrower
+
+
+
     def set_loan_amount(self, amount:int):
         if amount > 0:
             self.loan_amount = amount

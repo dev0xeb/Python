@@ -2,10 +2,11 @@ import unittest
 from Bike import Bike
 
 class TestBike(unittest.TestCase):
+
     def test_bike_can_turn_on(self):
         bike = Bike()
-        expected = bike.turn_on()
-        self.assertTrue(expected)
+        self.assertFalse(bike.is_on)
+        self.assertTrue(bike.turn_on())
 
     def test_bike_can_turn_off(self):
         bike = Bike()

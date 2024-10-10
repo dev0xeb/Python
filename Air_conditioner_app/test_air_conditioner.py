@@ -2,9 +2,6 @@ import unittest
 from air_conditioner import AirConditioner
 
 class TestAirConditioner(unittest.TestCase):
-    def setUp(self):
-        ac = AirConditioner()
-
     def test_AC_can_turn_on(self):
         ac = AirConditioner()
         self.assertFalse(ac.turn_off())

@@ -6,21 +6,25 @@ class TestLoanCalculator(unittest.TestCase):
         self.calculator = LoanCalculator()
 
     def test_intilization(self):
-        self.assertIsNone(self.calculator.borrower)
-        self.assertEqual(self.calculator.interest_rate, 24)
-        self.assertIsNone(self.calculator.loan_amount)
-        self.assertEqual(self.calculator.loan_period, 1)
+        self.assertIsNone(self.calculator.get_borrower())
+        self.assertEqual(self.calculator.get_interest_rate(), 24)
+        self.assertIsNone(self.calculator.get_loan_amount())
+        self.assertEqual(self.calculator.get_loan_period(), 1)
 
     def test_set_borrower(self):
         self.calculator.set_borrower("Ayoade Clinton")
-        self.assertEqual(self.calculator.borrower, "Ayoade Clinton")
+        self.assertEqual(self.calculator.get_borrower(), "Ayoade Clinton")
 
     def test_set_interest_rate(self):
+        self.calculator.set_borrower("Ayoade Clinton")
         self.calculator.set_loan_amount(4000)
-        self.assertEqual(self.calculator.loan_amount, 4000)
+        self.assertEqual(self.calculator.get_loan_amount(), 4000)
 
     def test_set_loan_period(self):
-        self.assertEqual(self.calculator.loan_period, 1)
+        self.calculator.set_borrower("Ayoade Clinton")
+        self.calculator.set_loan_amount(4000)
+        self.assertEqual(self.calculator.get_loan_amount(), 4000)
+        self.assertEqual(self.calculator.get_loan_period(), 1)
 
     def test_monthly_payment(self):
         self.calculator.set_borrower("Ayoade Clinton")
